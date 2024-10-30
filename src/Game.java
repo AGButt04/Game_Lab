@@ -15,6 +15,7 @@ public class Game {
 		Scanner input = new Scanner(System.in);
 		
 		String command; //Player's command
+		// Something.
 		do {
 			System.out.println(currentroom);
 			System.out.print("\nWhat's your next move? "); //print does not go to the next line
