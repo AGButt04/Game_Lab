@@ -6,16 +6,29 @@ public class Game {
 		runGame();
 	}
 	
-	private static ArrayList<Item> inventory; //static belongs to a class.
+	public static void print(Object obj) {
+		System.out.println(obj.toString());
+	}
+	
+	public static Item returnItem(String name) {
+		for (Item t : inventory) {
+			if(t.getItname().equals(name)) {
+				return t;
+			}
+		}
+		System.out.println("There is no such item in the player's inventory.");
+		return null;
+	}
+	public static ArrayList<Item> inventory; //static belongs to a class.
 	//inventory = new ArrayList<Item> (); Can't be outside of the method.
+	static Room currentroom;
 	
 	public static void runGame() {
 		inventory = new ArrayList<Item> ();
-		Room currentroom = World.buildWorld();
 		Scanner input = new Scanner(System.in);
-		
+		currentroom = World.buildWorld();
+
 		String command; //Player's command
-		// Something.
 		do {
 			System.out.println(currentroom);
 			System.out.print("\nWhat's your next move? "); //print does not go to the next line
@@ -33,6 +46,28 @@ public class Game {
 					currentroom = currentroom.getExit(command.charAt(0));					
 				} else {
 					System.out.println("There is nothing but darkness in this direction. GO BACK!");
+				}
+				break;
+			case "use":
+				Item its = currentroom.getItem(words[1]);
+				if (its == null) {
+					for (Item t :  inventory) {
+						if (t.getItname().equals(words[1])) {
+							t.use();
+						}
+					}
+				}
+				break;
+			case "open":
+				Item t2 = null;
+				Item itss = currentroom.getItem(words[1]);
+				if (itss == null) {
+					for (Item t : inventory) {
+						if (t.getItname().equals(words[1])) {
+							t2 = t;
+						}
+					}
+					t2.open();
 				}
 				break;
 			case "x":

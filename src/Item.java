@@ -25,6 +25,14 @@ public class Item {
 		description = d;
 	}
 	
+	public void open() {
+		Game.print("You can't open that!");
+	}
+	
+	public void use() {
+		Game.print("You can't use that!");
+	}
+	
 	public String toString() {
 		String s = "The item(s) in your inventory: " + itname + ".";
 		return s;

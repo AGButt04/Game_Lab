@@ -28,6 +28,7 @@ public class World {
 		veil.addItem("chest", new Item("chest","This chest is locked and is a dummy of the original chest of curses."));
 		
 		pulse.addExit(graveyard,'w');
+		pulse.addItem("safe", new Safe("safe", "This safe contains the treasure to your success!"));
 		
 		shadows.addExit(graveyard,'d');
 		shadows.addExit(veil, 'w');
@@ -36,6 +37,7 @@ public class World {
 		echo.addItem("flashlight", new Item("flashlight","This will help you when you will be lost in eternal darkness."));
 	
 		forsaken.addExit(night, 'w');
+		forsaken.addItem("combination", new Combination("combination", "You have finally found one of the many key towards growth."));
 		
 		night.addExit(graveyard, 'u');
 		night.addExit(forsaken, 'e');
