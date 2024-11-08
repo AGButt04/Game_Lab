@@ -43,7 +43,11 @@ public class Game {
 			case "u":
 			case "d":
 				if (currentroom.checkExit(currentroom, command.charAt(0))) {
-					currentroom = currentroom.getExit(command.charAt(0));					
+					if (currentroom.getExit(command.charAt(0)).getLock()) {
+						System.out.println("This Gate requires a key which you do not possess. Don't come back until you are worthy of it.");
+					} else {
+						currentroom = currentroom.getExit(command.charAt(0));
+					}
 				} else {
 					System.out.println("There is nothing but darkness in this direction. GO BACK!");
 				}

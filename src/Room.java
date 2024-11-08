@@ -11,12 +11,16 @@ public class Room {
 	private Room up;
 	private Room down;
 	private HashMap<String, Item> items = new HashMap<String, Item> ();
+	private boolean lock;
+	private String name;
 	
 	// Constructor method - initializes object variables
 	// Does not initialize Room variables because they default to null
 	// which is what we want
-	public Room(String des) { //Room's description
+	public Room(String n, String des) { //Room's description
+		name = n;
 		location = des;
+		lock = true;
 	}
 	
 	// Object methods
@@ -89,6 +93,22 @@ public class Room {
 	public void setItemD(String d, String name) {
 		Item it = items.get(name);
 		it.setDes(d);
+	}
+	
+	public boolean getLock() {
+		return lock;
+	}
+	
+	public void setLock(boolean b) {
+		lock = b;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String na) {
+		name = na;
 	}
 	
 	// Formats object data into a string.
