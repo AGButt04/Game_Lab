@@ -1,9 +1,27 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
 	public static void main(String[] args) {
+		DesMap();
 		runGame();
+		
+	}
+	
+	public static Item call(String it) {
+		for (Item i : inventory) {
+			if (i.getItname().equals(it)) {
+				return i;
+			}
+		}
+		System.out.println("There is no such item in your inventory.");
+		return null;
 	}
 	
 	public static void print(Object obj) {
@@ -16,16 +34,64 @@ public class Game {
 				return t;
 			}
 		}
-		System.out.println("There is no such item in the player's inventory.");
 		return null;
+	}
+	
+	public static void saveGame() {
+		File f = new File("SaveGame");
+		try {
+			FileOutputStream fos = new FileOutputStream(f);
+			ObjectOutputStream stream = new ObjectOutputStream(fos);
+			stream.writeObject(currentroom);
+			stream.writeObject(inventory);
+			stream.writeObject(rooms);
+			stream.close();
+		} catch (IOException ex) {
+			System.out.println("Program malfunctioned!");
+			ex.printStackTrace();
+		}
+	}
+	
+	public static void loadGame() {
+		File f = new File("SaveGame");
+		try {
+			FileInputStream fos = new FileInputStream(f);
+			ObjectInputStream stream = new ObjectInputStream(fos);
+			currentroom = (Room) stream.readObject();
+			inventory = (ArrayList) stream.readObject();
+			rooms = (HashMap) stream.readObject();
+			stream.close();
+		} catch (IOException ex) {
+			System.out.println("Can't load man!");
+		} catch (ClassNotFoundException e) {
+			System.out.println("No such class exist.");
+		}
 	}
 	public static ArrayList<Item> inventory; //static belongs to a class.
 	//inventory = new ArrayList<Item> (); Can't be outside of the method.
 	static Room currentroom;
 	
+	public static HashMap<String, Room> rooms = new HashMap<>();
+	
+	public static HashMap<String, String> descriptions = new HashMap<>();
+	
+	public static void DesMap() {
+		try {
+			Scanner input2 = new Scanner(new File("Room Descriptions"));
+			while (input2.hasNextLine()) {
+				String name = input2.nextLine();
+				String des = input2.nextLine();
+				input2.nextLine();
+				descriptions.put(name, des);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("There is no file with room descriptions.");
+		}
+	}
+	public static Scanner input = new Scanner(System.in);
+	
 	public static void runGame() {
 		inventory = new ArrayList<Item> ();
-		Scanner input = new Scanner(System.in);
 		currentroom = World.buildWorld();
 
 		String command; //Player's command
@@ -55,23 +121,16 @@ public class Game {
 			case "use":
 				Item its = currentroom.getItem(words[1]);
 				if (its == null) {
-					for (Item t :  inventory) {
-						if (t.getItname().equals(words[1])) {
-							t.use();
-						}
-					}
+					Item i1 = call(words[1]);
+					if (i1 != null) 
+						i1.use();
 				}
 				break;
 			case "open":
-				Item t2 = null;
 				Item itss = currentroom.getItem(words[1]);
 				if (itss == null) {
-					for (Item t : inventory) {
-						if (t.getItname().equals(words[1])) {
-							t2 = t;
-						}
-					}
-					t2.open();
+					Item i = call(words[1]);
+					i.open();
 				}
 				break;
 			case "x":
@@ -89,12 +148,12 @@ public class Game {
 				}
 				break;
 			case "look":
-				Item it = currentroom.getItem(words[1]);
-				if (it == null) {
-					for (Item i : inventory) {
-						if (i.getItname().equals(words[1])) {
+				Item itt = currentroom.getItem(words[1]);
+				if (itt == null) {
+					for (Item item : inventory) {
+						if (item.getItname().equals(words[1])) {
 							System.out.println("It is in your inventory. ");
-							System.out.println(i.getDes());
+							System.out.println(item.getDes());
 						}
 					}
 				} else {
@@ -112,9 +171,22 @@ public class Game {
 					}
 				}
 				break;
+			case "save":
+				saveGame();
+				break;
+			case "load":
+				loadGame();
+				break;
+			case "talk":
+				NPC npc = currentroom.getNPC(words[1]);
+				if (npc == null) {
+					System.out.println("There is no such thing in this room.");
+				} else {
+					npc.talk();
+				}
+				break;
 			default:
-				System.out.println("I don't know what that means. Invalid input.");
-								
+				System.out.println("I don't know what that means. Invalid input.");					
 			}
 		
 		} while(!command.equals("x"));

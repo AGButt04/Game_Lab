@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Item {
+public class Item implements Serializable{
 	
 	private String itname;
 	private String description;
@@ -9,7 +10,7 @@ public class Item {
 		description = des;
 	}
 	
-	public String getItname( ) {
+	public String getItname() {
 		return itname;
 	}
 	
