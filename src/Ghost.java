@@ -81,37 +81,25 @@ public class Ghost extends NPC{
 				break;
 			}
 		} else if (count == 3) {
-			int count1 = 0;
-			Item dia;
-			Item hammer;
-			Item rusty;
-			Item plate;
 			switch(option) {
 			case 1:
 				say("Okay, I did not expect that but a'ight!");
-				for (Item i : Game.inventory) {
-					if (i.getItname().equals("hammer"))
-						count1++;
-					else if (i.getItname().equals("rusty_shovel"))
-						count1++ ;
-					else if(i.getItname().equals("gold_plate"))
-						count1++;
+				Item plate = Game.returnItem("gold_plate");
+				Item hammer = Game.returnItem("hammer");
+				Item rusty = Game.returnItem("rusty_shovel");
+				Item dia = Game.returnItem("diamond");
+				if (Game.inventory.contains(dia)) {
+					Game.inventory.remove(dia);
 				}
-				if (count1 == 3) {
-					plate = Game.returnItem("gold_plate");
-					hammer = Game.returnItem("hammer");
-					rusty = Game.returnItem("rusty_shovel");
-					dia = Game.returnItem("diamond");
-					if (Game.inventory.contains(dia)) {
-						Game.inventory.remove(dia);
-					}
+				if (plate != null && hammer != null && rusty != null) {
 					Game.inventory.remove(plate);
 					Game.inventory.remove(rusty);
 					Game.inventory.remove(hammer);
-					Game.inventory.add(new Shotgun("shotgun", "This gun will help you kill the devil in Devil' lair."));
-					Game.inventory.add(new Item("bullet1", "Bullet 1 for the shotgun."));
-					Game.inventory.add(new Item("bullet2", "Bullet 2 for the shotgun."));
-					say("I didn't make no sword cuz I was tired but here is the Shotgun for you. Use it on that sucker three times.");
+					Game.inventory.add(new Shotgun("shotgun", "This gun will help you kill the devil in Devil's lair."));
+					Game.inventory.add(new Item("bullet", "Bullet (part) for the shotgun's round."));
+					Game.inventory.add(new Item("gunpowder", "Gun powder for the shotgun's round."));
+					say("I didn't make no sword cuz I was tired but here is the Shotgun and two parts for you. "
+							+ "Find the bullet casing, use it and make up a large round to kill that sucker!");
 				} else {
 					Game.print("You do not have all the items! I checked your inventory f**ker, stop lying and go and get all the things.");
 				}
@@ -124,24 +112,14 @@ public class Ghost extends NPC{
 		} else {
 			switch(option) {
 			case 1:
-				int count = 0;
-				Item grip;
-				Item lock;
-				Item blade;
 				say("Ah Shit! Here we go again. Hand over everything.");
 				Game.print("Do you wish to give him everything? yes or no?");
 				String a = Game.input.nextLine();
 				if (a.equals("yes")) {
-					grip = Game.returnItem("dagger_grip");
-					lock = Game.returnItem("dagger_lock");
-					blade = Game.returnItem("dagger_blade");
-					if (Game.inventory.contains(grip))
-						count++;
-					if (Game.inventory.contains(lock))
-						count++ ;
-					if(Game.inventory.contains(blade))
-						count++;
-					if (count == 3) {
+					Item grip = Game.returnItem("dagger_grip");
+					Item lock = Game.returnItem("dagger_lock");
+					Item blade = Game.returnItem("dagger_blade");
+					if (grip != null && lock != null && blade != null) {
 						Game.inventory.remove(grip);
 						Game.inventory.remove(lock);
 						Game.inventory.remove(blade);

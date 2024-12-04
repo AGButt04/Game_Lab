@@ -95,11 +95,12 @@ public class Game {
 		currentroom = World.buildWorld();
 
 		String command; //Player's command
+		String[] words;
 		do {
 			System.out.println(currentroom);
 			System.out.print("\nWhat's your next move? "); //print does not go to the next line
 			command = input.nextLine();
-			String[] words = command.split(" ");
+			words = command.split(" ");
 			
 			switch (words[0]) { //command.toLowerCase will work too. Command is a string so the comparing have to be in strings and double quotes.
 			case "e":
@@ -110,7 +111,11 @@ public class Game {
 			case "d":
 				if (currentroom.checkExit(currentroom, command.charAt(0))) {
 					if (currentroom.getExit(command.charAt(0)).getLock()) {
-						System.out.println("This Gate requires a key which you do not possess. Don't come back until you are worthy of it.");
+						if (currentroom.getName().equals("The Gate of Infinite Curses")) {
+							System.out.println("There is a devil in your way. Kill him before entering the final gate.");
+						} else {
+							System.out.println("The " + currentroom.getExit(command.charAt(0)).getName() +" requires a key which you do not possess. Don't come back until you are worthy of it.");	
+						}
 					} else {
 						currentroom = currentroom.getExit(command.charAt(0));
 					}
@@ -142,9 +147,11 @@ public class Game {
 				if (check == null) {
 					System.out.println("There is no such item in current room.");
 				} else {
-					System.out.println(currentroom.getItem(words[1]).getItname() + " is added to your inventory!");
-					inventory.add(check);
-					currentroom.removeItem(words[1]);
+					check.take();
+					if (currentroom.items.size() == 0) {
+						String name = currentroom.getName() + 2;
+						currentroom.desc = name;
+					}
 				}
 				break;
 			case "look":

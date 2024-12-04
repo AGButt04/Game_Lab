@@ -6,21 +6,14 @@ public class AbyssKey extends Item {
 	}
 	
 	public void use() {
-		int count = 0;
-		for (Item i : Game.inventory) {
-			if (i.getItname().equals("abyssKey")) {
-				count++;
-			}
-		}
-		if (count == 1) {
-			Room r = Game.currentroom.getExit('e');
-			if (r.getName().equals("Gate of Hungering Abyss")) {
-				r.setLock(false);
-				Game.print("You have unlocked the Gate of Hungering Abyss. Well Done!");	
-			}
+		Item key = Game.returnItem("abyssKey");
+		Room r = Game.currentroom.getExit('e');
+		if (r != null && r.getName().equals("Gate of Hungering Abyss") && key != null) {
+			r.setLock(false);
+			Game.print("You have unlocked the Gate of Hungering Abyss. Well Done!");
+			Game.inventory.remove(key);
 		} else {
-			Game.print("This Gate is unlocked. You need a key which is split in half.");
+			Game.print("Go into the appropriate room to open the gate.");
 		}
 	}
-
 }

@@ -8,9 +8,13 @@ public class Mysterious_Amulet extends Item {
 	public void use() {
 		Room pulse = Game.currentroom.getExit('e');
 		Room night = Game.currentroom.getExit('d');
-		pulse.setLock(false);
-		night.setLock(false);
-		System.out.println("You have unlocked The Gates of Pulse and Night.");
+		if (pulse != null && night != null) {
+			pulse.setLock(false);
+			night.setLock(false);
+			Game.print("You have unlocked The Gates of Pulse and Night.");
+			Game.inventory.remove(Game.returnItem("mysterious_amulet"));
+		} else {
+			Game.print("Go to the appropriate room.");
+		}
 	}
-
 }

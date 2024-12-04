@@ -11,7 +11,7 @@ public class Inscription extends Item {
 				+ "meant to protect the village in times of famine and war. Instead, it unleashed a curse of eternal torment. \n"
 				+ "The townsfolk were struck down, each one seemingly cursed to wander this land after death, their spirits bound to the soil.\n"
 				+ "There is only one way to heal this village, which is somewhere hidden. \n";
-		System.out.println(s);
+		Game.print(s);
+		Game.inventory.remove(Game.returnItem("inscription"));
 		}
-
 }

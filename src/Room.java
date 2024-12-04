@@ -11,16 +11,18 @@ public class Room implements Serializable{
 	private Room south;
 	private Room up;
 	private Room down;
-	private HashMap<String, Item> items = new HashMap<String, Item>();
+	public HashMap<String, Item> items = new HashMap<String, Item>();
 	private HashMap<String, NPC> NPCs = new HashMap<String, NPC>();
 	private boolean lock;
 	private String name;
+	public String desc;
 
 	// Constructor method - initializes object variables
 	// Does not initialize Room variables because they default to null
 	// which is what we want
 	public Room(String n) { // Room's description is gone.
 		name = n;
+		desc = name;
 		lock = true;
 		Game.rooms.put(n, this);
 	}
@@ -131,7 +133,7 @@ public class Room implements Serializable{
 	// Formats object data into a string.
 	// Returns that string.
 	public String toString() {
-		String d = Game.descriptions.get(name);
+		String d = Game.descriptions.get(desc);
 		return d;
 	}
 

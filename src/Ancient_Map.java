@@ -10,7 +10,6 @@ public class Ancient_Map extends Item {
 				+ "The Gate of Haunting Echo in your west. \n"
 				+ "If you walk slightly downhill, You will see The Gate of Eternal Night. \n"
 				+ "The Gate of Shadows Embrace in upward. \n";
-		System.out.println(s);
+		Game.print(s);
 	}
-
 }

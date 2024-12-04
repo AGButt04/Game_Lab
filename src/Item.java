@@ -10,6 +10,11 @@ public class Item implements Serializable{
 		description = des;
 	}
 	
+	public void take() {
+		Game.print(itname + " is added to your inventory!\n");
+		Game.inventory.add(this);
+		Game.currentroom.removeItem(itname);
+	}
 	public String getItname() {
 		return itname;
 	}
