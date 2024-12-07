@@ -32,11 +32,10 @@ public class World {
 		graveyard.addItem("rusty_shovel", new Item("rusty_shovel","Used to dig, but looks like it's been wielded as weapon before."));
 		graveyard.addItem("Echokey", new EchoKey("Echokey", "This key will allow you to move to Gate of Haunting echo."));
 		graveyard.addItem("ancient_map", new Ancient_Map("ancient_map", "This will guide to towards the hidden pathways."));
-		
+
 		veil.addExit(shadows, 'e');
 		veil.addExit(sorrow, 'w');
 		veil.addExit(lair, 'n');
-		//veil.setLock(false);
 		veil.addItem("sulphur", new Item("sulphur", "This will make up an acid when dissolved with oxygen."));
 		veil.addItem("torch", new Item("torch", "This can only be used once to reflect some light."));
 		veil.addItem("mysterious_amulet", new Mysterious_Amulet("mysterious_amulet","This will help you in your exploration.")); //opens night and pulse
@@ -44,7 +43,6 @@ public class World {
 		
 		pulse.addExit(graveyard,'w');
 		pulse.addExit(dreams, 'd');
-		//pulse.setLock(false);
 		pulse.addItem("safe", new Safe("safe", "This safe contains the treasure to your success!")); //Got diamond and pulse pendulum
 		pulse.addItem("hammer", new Item("hammer", "This can help you smash some things open just for your curiousity."));
 		pulse.addItem("hydrogen", new Item("hydrogen","This will help in acid making"));
@@ -56,7 +54,7 @@ public class World {
 		shadows.addNPC("puppy", new Puppy());
 		shadows.addItem("hydrogen", new Item("hydrogen", "Use to make acid."));
 		shadows.addItem("sulphur", new Item("sulphur","Use to make acid."));
-		shadows.setLock(false); //Final pendulum in silver chest (locked)
+		shadows.setLock(false); //second pendulum in silver chest (locked)
 		
 		echo.addExit(graveyard, 'e');
 		echo.addExit(chains, 'u');
@@ -93,7 +91,6 @@ public class World {
 		//contains chain key's other half
 
 		abyss.addExit(shadows, 'w');
-		//abyss.setLock(false);
 		abyss.addNPC("Ghost", new Ghost());
 		abyss.addItem("Vase", new Vase("Vase", "Looks like just dust in it.")); //Got heart fragment
 		abyss.addItem("Clock", new Clock("Clock", "This Pendulum Clock works but tells the wrong time.")); // got abyss pendulum.

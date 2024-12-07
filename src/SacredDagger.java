@@ -9,7 +9,8 @@ public class SacredDagger extends Item {
 		Item heart = Game.returnItem("Sukuna's_heart");
 		Item fragment = Game.returnItem("heart_fragment");
 		if (heart != null && fragment != null) {
-			Game.print("Congratulations, you have stabbed Sukuna's heart and lifted up the curse, saving the village!");
+			Game.print("\nCongratulations, you have stabbed Sukuna's heart and lifted up the curse, saving the village!");
+			Game.print("The Game is over here, now you can wander around or close it.");
 			Game.inventory.remove(heart);
 			Game.inventory.remove(fragment);
 		} else {
