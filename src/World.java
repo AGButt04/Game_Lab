@@ -3,7 +3,10 @@ public class World {
 	public static Room buildWorld() {
 		//Builds the game world
 		//Returns the room where the player starts in
-		Game.print("This is where your journey begins. If you try to take something, write the word exactly as it is written in the room description.\n");
+		Game.print("This is where your journey begins. The directions are 'n,s,e,w,u,d'. "
+				+ "If you try to take something, write the word exactly as it is written in the room description.");
+		Game.print("Your commands are 'use' (item), 'open' (item), 'take' (item) before using and opening, 'location' to print your current room.");
+		Game.print("'save' to save game, 'load' to load game, 'i' to check your inventory, and 'look' to see the item's description.\n");
 		Room graveyard = new Room("The Black Graveyard");
 		Room veil = new Room("Gate of Cursed Veil");
 		Room forsaken = new Room("Gate of Forsaken Path");
@@ -72,7 +75,6 @@ public class World {
 		night.addExit(graveyard, 'u');
 		night.addExit(forsaken, 'e');
 		night.addExit(roots, 'w');
-		//night.setLock(false);
 		night.addItem("oxygen", new Oxygen("oxygen", "Final component to make Sulphuric Acid."));
 		night.addItem("closet", new Closet("closet","Try to open this dirty closet if you want. I bet it's empty.")); //mirror shard and frame.
 		//contains last pendulum

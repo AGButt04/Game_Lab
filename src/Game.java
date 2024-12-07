@@ -125,7 +125,7 @@ public class Game {
 				Game.print("There is nothing but darkness in this direction. GO BACK!");
 			}
 			break;
-		case "where":
+		case "location":
 			print(currentroom);
 			break;
 		case "use":
