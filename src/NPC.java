@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -26,15 +27,24 @@ public class NPC implements Serializable{
 			// This method intentionally left blank.
 		}
 		
-		public boolean give(String i) {
-			Item item = Game.returnItem(i);
-			if (item != null) {
-				Game.inventory.remove(item);
-				return true;
-			} else {
-				return false;
+		public boolean give(ArrayList<Item> items) {
+			int count = 0;
+			for (Item i : items) {
+				if (i != null) {
+					count++ ;
+				} else {
+					return false;
+				}
 			}
+			if (count == items.size()) {
+				for (int i = 0; i < items.size(); i++) {
+					Game.inventory.remove(items.get(i));
+				}
+				return true;
+			}
+			return false;
 		}
+			
 		
 		public void getResponse(String[] options) {
 			String s = "";

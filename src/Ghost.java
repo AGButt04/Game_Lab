@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Ghost extends NPC{
 	
@@ -54,10 +55,11 @@ public class Ghost extends NPC{
 				break;
 			case 2:
 				say("\nThere is a diamond somewhere in the village. I believe you have it so I am taking it before telling you the answer.");
-				boolean check = give("diamond");
-				if (check) {
+				Item diamond = Game.returnItem("diamond");
+				if (diamond != null) {
 						say("Thank you. If I remember correctly, I placed it around the Gate of Silent Sorrows.");
 						Game.print("The Ghost took the diamond out your bag and you can't do shit about it.");
+						Game.inventory.remove(diamond);
 				} else {
 					say("You don't got no diamond. Get out! Lying bastard!");
 				}
@@ -78,16 +80,18 @@ public class Ghost extends NPC{
 			switch(option) {
 			case 1:
 				say("\nOkay, I did not expect that but a'ight!");
-				boolean plate = give("gold_plate");
-				boolean shovel = give("rusty_shovel");
-				boolean hammer = give("hammer");
-				if (shovel && hammer && plate) {
+				ArrayList<Item> item = new ArrayList<>();
+				item.add(Game.returnItem("rusty_shovel"));
+				item.add(Game.returnItem("hammer"));
+				item.add(Game.returnItem("gold_plate"));
+				boolean ch = give(item);
+				if (ch) {
 					Game.inventory.add(new Shotgun("shotgun", "This gun will help you kill the devil in Devil's lair."));
 					Game.inventory.add(new Item("bullet", "Bullet (part) for the shotgun's round."));
 					Game.inventory.add(new Item("gunpowder", "Gun powder for the shotgun's round."));
 					say("I didn't make no sword cuz I was tired but here is the Shotgun and two parts for you. "
 							+ "Find the bullet casing, use it and make up a large round to kill that sucker!");
-					Game.print("You need Dagger's lock, grip, blade, and the Devil's_head in order for the Ghost to forge the Sacred Dagger.");;
+					Game.print("You need Dagger's lock, grip, blade, and the Devil's_head in order for the Ghost to forge the Sacred Dagger.");
 				} else {
 					Game.print("You do not have all the items! I checked your inventory f**ker, stop lying and go and get all the things.");
 				}
@@ -101,11 +105,13 @@ public class Ghost extends NPC{
 			switch(option) {
 			case 1:
 				say("\nAh Shit! Here we go again. Hand over everything. ");
-				boolean grip = give("dagger_grip");
-				boolean lock = give("dagger_lock");
-				boolean blade = give("dagger_blade");
-				boolean head = give("Devil's_head");
-				if (grip && lock && blade && head) {
+				ArrayList<Item> items = new ArrayList<> ();
+				items.add(Game.returnItem("dagger_grip"));
+				items.add(Game.returnItem("dagger_lock"));
+				items.add(Game.returnItem("dagger_blade"));
+				items.add(Game.returnItem("Devil's_head"));
+				boolean check = give(items);
+				if (check) {
 					Game.inventory.add(new SacredDagger("Sacred_Dagger", "This is the most important thing to kill the curse."));
 					say("Congratulions, Final battle awaits!");	
 					Game.print("The Ghost has forged a Sacred Dagger and added it to your inventory!");
