@@ -14,7 +14,6 @@ public class Game {
 		currentroom = World.buildWorld();
 		DesMap();
 		print(currentroom);
-		//runGame();	
 	}
 	
 	public static GameUserInterface GUI;
@@ -35,7 +34,6 @@ public class Game {
 				return i;
 			}
 		}
-		Game.print("There is no such item in your inventory.");
 		return null;
 	}
 	
@@ -132,8 +130,10 @@ public class Game {
 			Item its = currentroom.getItem(words[1]);
 			if (its == null) {
 				Item i1 = call(words[1]);
-				if (i1 != null) 
+				if (i1 != null)  
 					i1.use();
+			} else {
+				print("It is not in your inventory.");
 			}
 			break;
 		case "open":
@@ -141,6 +141,8 @@ public class Game {
 			if (itss == null) {
 				Item i = call(words[1]);
 				i.open();
+			} else {
+				print("It is not in your inventory.");
 			}
 			break;
 		case "x":
@@ -216,113 +218,5 @@ public class Game {
 		default:
 			print("I don't know what that means. Invalid input.");
 		}
-	}
-	public static void runGame() {
-		inventory = new ArrayList<Item> ();
-		currentroom = World.buildWorld();
-
-		String command; //Player's command
-		String[] words;
-		do {
-			System.out.println(currentroom);
-			System.out.print("\nWhat's your next move? "); //print does not go to the next line
-			command = input.nextLine();
-			words = command.split(" ");
-			
-			switch (words[0]) { //command.toLowerCase will work too. Command is a string so the comparing have to be in strings and double quotes.
-			case "e":
-			case "w":
-			case "n":
-			case "s":
-			case "u":
-			case "d":
-				if (currentroom.checkExit(currentroom, command.charAt(0))) {
-					if (currentroom.getExit(command.charAt(0)).getLock()) {
-						if (currentroom.getName().equals("The Gate of Infinite Curses")) {
-							System.out.println("There is a devil in your way. Kill him before entering the final gate.");
-						} else {
-							System.out.println("The " + currentroom.getExit(command.charAt(0)).getName() +" requires a key which you do not possess. Don't come back until you are worthy of it.");	
-						}
-					} else {
-						currentroom = currentroom.getExit(command.charAt(0));
-					}
-				} else {
-					System.out.println("There is nothing but darkness in this direction. GO BACK!");
-				}
-				break;
-			case "use":
-				Item its = currentroom.getItem(words[1]);
-				if (its == null) {
-					Item i1 = call(words[1]);
-					if (i1 != null) 
-						i1.use();
-				}
-				break;
-			case "open":
-				Item itss = currentroom.getItem(words[1]);
-				if (itss == null) {
-					Item i = call(words[1]);
-					i.open();
-				}
-				break;
-			case "x":
-				System.out.println("\nThanks for walking through my game!");
-				break;
-
-			case "take":
-				Item check = currentroom.getItem(words[1]);
-				if (check == null) {
-					System.out.println("There is no such item in current room.");
-				} else {
-					check.take();
-					if (currentroom.items.size() == 0) {
-						String name = currentroom.getName() + 2;
-						currentroom.desc = name;
-					}
-				}
-				break;
-			case "look":
-				Item itt = currentroom.getItem(words[1]);
-				if (itt == null) {
-					for (Item item : inventory) {
-						if (item.getItname().equals(words[1])) {
-							System.out.println("It is in your inventory. ");
-							System.out.println(item.getDes());
-						}
-					}
-				} else {
-					System.out.println(currentroom.getItem(words[1]).getDes());
-				}
-				break;
-			case "i":
-			case "I":
-				int ch = inventory.size();
-				if (ch == 0) {
-					System.out.println("There is nothing in your inventory yet. You still got some work to do.");
-				} else {
-					for (Item I : inventory) {
-						System.out.println(I);
-					}
-				}
-				break;
-			case "save":
-				saveGame();
-				break;
-			case "load":
-				loadGame();
-				break;
-			case "talk":
-				NPC npc = currentroom.getNPC(words[1]);
-				if (npc == null) {
-					System.out.println("There is no such thing in this room.");
-				} else {
-					npc.talk();
-				}
-				break;
-			default:
-				System.out.println("I don't know what that means. Invalid input.");					
-			}
-		
-		} while(!command.equals("x"));
 	}
 }
