@@ -188,6 +188,7 @@ public class Game {
 			break;
 		case "load":
 			loadGame();
+			print(currentroom);
 			break;
 		case "talk":
 			NPC npc = currentroom.getNPC(words[1]);

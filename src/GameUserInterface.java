@@ -9,7 +9,7 @@ public class GameUserInterface extends JFrame implements ActionListener {
 	public JTextArea text;
 	private JPanel panel;
 	private JLabel label;
-	public static JTextField field;
+	private JTextField field;
 	private JButton button;
 
 	public GameUserInterface() {

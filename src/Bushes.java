@@ -16,7 +16,8 @@ public class Bushes extends Item {
 			Game.inventory.remove(acid);
 			Game.inventory.remove(bushes);
 		} else {
-			Game.print("You need something to dissolve bushes");
+			Game.print("You need something to dissolve these bushes.");
+			
 		}
 	}
 

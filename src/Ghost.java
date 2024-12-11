@@ -87,6 +87,7 @@ public class Ghost extends NPC{
 					Game.inventory.add(new Item("gunpowder", "Gun powder for the shotgun's round."));
 					say("I didn't make no sword cuz I was tired but here is the Shotgun and two parts for you. "
 							+ "Find the bullet casing, use it and make up a large round to kill that sucker!");
+					Game.print("You need Dagger's lock, grip, blade, and the Devil's_head in order for the Ghost to forge the Sacred Dagger.");;
 				} else {
 					Game.print("You do not have all the items! I checked your inventory f**ker, stop lying and go and get all the things.");
 				}
@@ -99,11 +100,12 @@ public class Ghost extends NPC{
 		} else {
 			switch(option) {
 			case 1:
-				say("\nAh Shit! Here we go again. Hand over everything.");
+				say("\nAh Shit! Here we go again. Hand over everything. ");
 				boolean grip = give("dagger_grip");
 				boolean lock = give("dagger_lock");
 				boolean blade = give("dagger_blade");
-				if (grip && lock && blade) {
+				boolean head = give("Devil's_head");
+				if (grip && lock && blade && head) {
 					Game.inventory.add(new SacredDagger("Sacred_Dagger", "This is the most important thing to kill the curse."));
 					say("Congratulions, Final battle awaits!");	
 					Game.print("The Ghost has forged a Sacred Dagger and added it to your inventory!");

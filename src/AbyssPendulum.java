@@ -9,10 +9,10 @@ public class AbyssPendulum extends Item {
 		Item n = Game.returnItem("night_pendulum");
 		Item v = Game.returnItem("veil_pendulum");
 		Item p = Game.returnItem("pulse_pendulum");
+		Item a = Game.returnItem("abyss_pendulum");
 		if (n != null && v != null && p != null) {
 			Game.print("You have crafted the Ultimate Pendulum!");
 			Game.inventory.add(new UltimatePendulum("ultimate_pendulum", "This is crafted from all four pendulums and will open the Devil's lair."));
-			Item a = Game.returnItem("abyss_pendulum");
 			Game.inventory.remove(n);
 			Game.inventory.remove(v);
 			Game.inventory.remove(p);
