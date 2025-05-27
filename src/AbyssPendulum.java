@@ -6,8 +6,8 @@ public class AbyssPendulum extends Item {
 	}
 	
 	public void use() {
-		Item p = Game.returnItem("pulse_pendulum");
 		Item n = Game.returnItem("night_pendulum");
+		Item p = Game.returnItem("pulse_pendulum");
 		Item v = Game.returnItem("veil_pendulum");
 		Item a = Game.returnItem("abyss_pendulum");
 		if (n != null && v != null && p != null) {
