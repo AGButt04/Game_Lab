@@ -7,8 +7,8 @@ import java.awt.event.*;
 public class GameUserInterface extends JFrame implements ActionListener {
 	
 	public JTextArea text;
-	private JPanel panel;
 	private JLabel label;
+	private JPanel panel;
 	private JTextField field;
 	private JButton button;
 
