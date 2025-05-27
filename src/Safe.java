@@ -6,8 +6,8 @@ public class Safe extends Item {
 	}
 
 	public void open() {
-		Item com = Game.returnItem("combination");
 		Item safe = Game.returnItem("safe");
+		Item com = Game.returnItem("combination");
 		if (com != null) {
 			Game.print("Using the combination, you have opened the safe and found a diamond inside! Naturally, you pocket the diamond. Along"
 					+ "with the pulse_pendulum.");

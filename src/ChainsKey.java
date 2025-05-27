@@ -6,8 +6,8 @@ public class ChainsKey extends Item {
 	}
 	
 	public void use() {
-		Item key = Game.returnItem("chainsKey");
 		Room r = Game.currentroom.getExit('u');
+		Item key = Game.returnItem("chainsKey");
 		if (r != null && r.getName().equals("Gate of Eternal Chains") && key != null) {
 			r.setLock(false);
 			Game.print("You have unlocked the Gate of Eternal Chains. Keep your eyes open now.");

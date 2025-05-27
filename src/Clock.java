@@ -11,10 +11,10 @@ public class Clock extends Item {
 			Game.print("You have opened the clock!");
 			Item hammer = Game.returnItem("hammer");
 			if (hammer != null) {
-				Game.print("You broke the clock and found a pendulum.");
-				Game.inventory.add(new AbyssPendulum("abyss_pendulum", "This is the last pendulum of the four. Try using it after getting all four"));
 				Game.inventory.remove(Game.returnItem("Clock"));
 				Game.inventory.remove(lockpick);
+				Game.print("You broke the clock and found a pendulum.");
+				Game.inventory.add(new AbyssPendulum("abyss_pendulum", "This is the last pendulum of the four. Try using it after getting all four"));
 			} else {
 				Game.print("You need something to break this.");
 			}

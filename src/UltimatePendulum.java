@@ -5,8 +5,8 @@ public class UltimatePendulum extends Item {
 	}
 		
 	public void use() {
-		Item p = Game.returnItem("ultimate_pendulum");
 		Room r = Game.currentroom.getExit('n');
+		Item p = Game.returnItem("ultimate_pendulum");
 		if (r != null && r.getName().equals("The Devil's Lair") && p != null) {
 			Game.print("You have successfully place the Ultimate pendulum and unlocked the Gate of Devil's Lair! Final Battle begins!");
 			r.setLock(false);

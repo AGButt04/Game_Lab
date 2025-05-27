@@ -6,8 +6,8 @@ public class MirrorShard extends Item {
 	}
 	
 	public void use() {
-		Item mirror = Game.returnItem("mirror_shard");
 		Item torch = Game.returnItem("torch");
+		Item mirror = Game.returnItem("mirror_shard");
 		if (torch != null) {
 			Game.print("The combination to the safe is in Gate of Forsaken Path. Just get to the room and write 'take combination.' ");
 			Game.print("You will find the last bullet piece in the room which grows. Look closely!");

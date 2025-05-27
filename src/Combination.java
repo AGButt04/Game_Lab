@@ -6,7 +6,7 @@ public class Combination extends Item {
 	}
 	
 	public void use() {
-		Game.print("If you find the safe, try opening it!");
+		Game.print("This is a combination of the safe you will find soon");
 	}
 	
 
