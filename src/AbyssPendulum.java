@@ -5,10 +5,10 @@ public class AbyssPendulum extends Item {
 		super(name, des);
 	}
 	
-	public void use() {	
+	public void use() {
+		Item p = Game.returnItem("pulse_pendulum");
 		Item n = Game.returnItem("night_pendulum");
 		Item v = Game.returnItem("veil_pendulum");
-		Item p = Game.returnItem("pulse_pendulum");
 		Item a = Game.returnItem("abyss_pendulum");
 		if (n != null && v != null && p != null) {
 			Game.print("You have crafted the Ultimate Pendulum!");

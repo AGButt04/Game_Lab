@@ -6,8 +6,8 @@ public class AbyssGrip extends Item {
 	}
 	
 	public void use() {
-		Item i = Game.returnItem("abyss_tip");
 		Item c = Game.returnItem("abyss_grip");
+		Item i = Game.returnItem("abyss_tip");
 		if (i != null && c != null) {
 			Game.print("You have made the Key of the Gate of Hungering Abyss.");
 			Game.inventory.add(new AbyssKey("abyssKey", "This key will unlock the Gate of Hungering Abyss."));

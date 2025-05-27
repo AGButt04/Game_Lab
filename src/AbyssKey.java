@@ -6,8 +6,8 @@ public class AbyssKey extends Item {
 	}
 	
 	public void use() {
-		Item key = Game.returnItem("abyssKey");
 		Room r = Game.currentroom.getExit('e');
+		Item key = Game.returnItem("abyssKey");
 		if (r != null && r.getName().equals("Gate of Hungering Abyss") && key != null) {
 			r.setLock(false);
 			Game.print("You have unlocked the Gate of Hungering Abyss. Well Done!");

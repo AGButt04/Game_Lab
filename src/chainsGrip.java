@@ -6,8 +6,8 @@ public class chainsGrip extends Item {
 	}
 	
 	public void use() {
-		Item i = Game.returnItem("chains_tip");
 		Item c = Game.returnItem("chains_grip");
+		Item i = Game.returnItem("chains_tip");
 		if (i != null && c != null) {
 			Game.print("You have made the Key of the Gate of Eternal Chains.");
 			Game.inventory.add(new ChainsKey("chainsKey", "This key will unlock the Gate of Eternal Chains."));

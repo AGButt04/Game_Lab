@@ -6,8 +6,8 @@ public class Bushes extends Item {
 	}
 	
 	public void open() {
-		Item acid = Game.returnItem("H2SO4");
 		Item bushes = Game.returnItem("bushes");
+		Item acid = Game.returnItem("H2SO4");
 		if (acid != null) {
 			Game.print("The bushes are dissolved and let's see if something was hidden in those.");
 			Game.inventory.add(new chainsGrip("chains_grip", "This is the second half of the key of the Gate of the Eternal Chains."));
