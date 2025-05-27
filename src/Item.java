@@ -2,8 +2,8 @@ import java.io.Serializable;
 
 public class Item implements Serializable{
 	
-	private String itname;
 	private String description;
+	private String itname;
 	
 	public Item(String n, String des) {
 		itname = n;

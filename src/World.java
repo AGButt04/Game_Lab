@@ -11,8 +11,8 @@ public class World {
 		Room veil = new Room("Gate of Cursed Veil");
 		Room forsaken = new Room("Gate of Forsaken Path");
 		Room shadows = new Room("Gate of Shadows Embrace");
-		Room echo = new Room("Gate of Haunting Echo");
 		Room pulse = new Room("Gate of Hidden Pulse");
+		Room echo = new Room("Gate of Haunting Echo");
 		Room night = new Room("Gate of Eternal night");
 		Room roots = new Room("Gate of Writhing Roots");
 		Room dreams = new Room("Gate of Fractured Dreams");

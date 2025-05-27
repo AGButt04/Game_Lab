@@ -16,9 +16,9 @@ public class Game {
 		print(currentroom);
 	}
 	
-	public static GameUserInterface GUI;
 	public static ArrayList<Item> inventory; //static belongs to a class.
-
+	public static GameUserInterface GUI;
+	
 	static Room currentroom;
 	
 	public static HashMap<String, Room> rooms = new HashMap<>();

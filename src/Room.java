@@ -14,8 +14,8 @@ public class Room implements Serializable{
 	public HashMap<String, Item> items = new HashMap<String, Item>();
 	private HashMap<String, NPC> NPCs = new HashMap<String, NPC>();
 	private boolean lock;
-	private String name;
 	public String desc;
+	private String name;
 
 	// Constructor method - initializes object variables
 	// Does not initialize Room variables because they default to null
