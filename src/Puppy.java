@@ -62,7 +62,7 @@ public class Puppy extends NPC{
 		} else {
 			switch(option) {
 				case 1:
-					say("Yip!"); 
+					say("Yipay!"); 
 					Game.print("The puppy went away waging its tail, being disgusted with you.");
 					break;
 				case 2:

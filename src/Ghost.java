@@ -81,8 +81,8 @@ public class Ghost extends NPC{
 			case 1:
 				say("\nOkay, I did not expect that but a'ight!");
 				ArrayList<Item> item = new ArrayList<>();
-				item.add(Game.returnItem("rusty_shovel"));
 				item.add(Game.returnItem("hammer"));
+				item.add(Game.returnItem("rusty_shovel"));
 				item.add(Game.returnItem("gold_plate"));
 				boolean ch = give(item);
 				if (ch) {

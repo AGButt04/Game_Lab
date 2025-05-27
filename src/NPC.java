@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class NPC implements Serializable{
-		private String name; // NPC's name
 		private String desc; // NPC's description
+		private String name; // NPC's name
 		
 		public NPC(String name, String desc) {
 			this.name = name;
