@@ -1,12 +1,15 @@
-📁 Game_Lab Description: 
-A Java-based project developed to explore fundamental game development concepts, including a Graphical User Interface rendering and user interaction. 
-This is a long text game. I took the inspriation from Resident Evil Village, of course, can't be as good as that.
+Resident Evil from Temu — OOP Project
+Game Lab is an object-oriented programming project designed to demonstrate key OOP concepts such as encapsulation, inheritance, polymorphism, and abstraction. This project simulates a simple game environment where multiple game entities interact with each other through well-defined classes and methods.
 
-Technologies: 
-Java
-Object-Oriented Programming
+Features
+Modular Design using OOP principles.
 
-How to Run:
-Clone the repository.
-Compile the Java files using javac.
-Run the main class with java.
+Classes for different game entities (e.g., Player, Enemy, Item).
+
+Interaction between objects (attack, move, use items).
+
+Use of inheritance and polymorphism to extend behaviors.
+
+Clean and maintainable code structure.
+
+Easily extendable for new game features.
