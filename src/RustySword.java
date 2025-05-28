@@ -6,8 +6,8 @@ public class RustySword extends Item {
 	}
 	
 	public void open() {
-		Item sword = Game.returnItem("rustysword");
 		Item hammer = Game.returnItem("hammer");
+		Item sword = Game.returnItem("rustysword");
 		if (sword != null && hammer != null) {
 			Game.print("You have broken the sword with the hammer. Happy now?!");
 			Game.inventory.add(new Item("knife", "This knife can help you sometimes."));
