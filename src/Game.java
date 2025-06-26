@@ -39,7 +39,6 @@ public class Game {
 	
 	public static void print(Object ob) {//(Object obj)
 		GUI.text.append(ob.toString() + "\n");
-		//System.out.println(ob);
 	}
 	
 	public static Item returnItem(String name) {
